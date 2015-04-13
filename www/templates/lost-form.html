@@ -1,0 +1,97 @@
+<ion-view name="tab-lost" view-title="{{ 'TAB_LOST.FORM_TITLE' | translate }}">
+  <ion-content id="lostForm">
+    <div class="row">
+      <div class="col col-50">
+        <core-image style="width:150px; height:150px;"
+                    sizing="cover"
+                    preload
+                    fade
+                    src="{{data.image}}"
+                    placeholder="img/no-image.png"></core-image>
+      </div>
+      <div class="col col-25">
+        <paper-button ng-click="getPhoto('CAMERA')">
+          <core-icon class="icon ion-camera"></core-icon>
+        </paper-button>
+      </div>
+      <div class="col col-25">
+        <paper-button ng-click="getPhoto('GALLERY')">
+          <core-icon class="icon ion-image"></core-icon>
+        </paper-button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-100">
+        <paper-input-decorator label="{{ 'TAB_LOST.FORM_COLOR' | translate }}" floatingLabel>
+          <input is="core-input" ng-model="data.color">
+        </paper-input-decorator>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-100">
+        <paper-input-decorator label="{{ 'TAB_LOST.FORM_STATE' | translate }}" floatingLabel>
+          <input is="core-input" ng-model="data.state">
+        </paper-input-decorator>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-100">
+        <paper-input-decorator label="{{ 'TAB_LOST.FORM_ZONE' | translate }}" floatingLabel>
+          <input is="core-input" ng-model="data.zone">
+        </paper-input-decorator>
+      </div>
+    </div>
+    <div class="row row-center">
+      <div class="col col-50">
+        <core-label translate>TAB_LOST.FORM_GENDER</core-label>
+      </div>
+      <div class="col col-50">
+        <div class="list">
+          <label class="item item-radio">
+            <input type="radio" name="group" ng-model="data.gender" value="male">
+            <div class="item-content">Male</div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+        </div>
+
+        <div class="list">
+          <label class="item item-radio">
+            <input type="radio" name="group" ng-model="data.gender" value="female">
+            <div class="item-content">Female</div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row row-center">
+      <div class="col col-50">
+        <core-label translate>TAB_LOST.FORM_DATE</core-label>
+      </div>
+      <div class="col col-50">
+        <paper-button ng-click="showDatePicker()" ng-hide="dateSelected">
+          <core-icon class="icon ion-calendar"></core-icon>
+        </paper-button>
+        <paper-input-decorator ng-show="dateSelected">
+          <input ng-model="data.date">
+        </paper-input-decorator>
+      </div>
+    </div>
+    <div class="row row-center">
+      <div class="col col-50">
+        <core-label translate>TAB_LOST.FORM_DESCRIPTION</core-label>
+      </div>
+      <div class="col col-50">
+        <paper-input-decorator label="{{ 'TAB_LOST.FORM_ADD_COMMENT' | translate }}">
+          <paper-autogrow-textarea>
+            <textarea id="description" ng-model="data.description"></textarea>
+          </paper-autogrow-textarea>
+        </paper-input-decorator>
+      </div>
+    </div>
+    <div class="row row-center">
+      <div class="col col-100">
+        <button type="button" ng-click="saveLostPet(data)" class="button button-block button-balanced" translate>TAB_LOST.FORM_SUBMIT</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

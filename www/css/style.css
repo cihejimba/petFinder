@@ -1,0 +1,47 @@
+/* Empty. Add your own CSS if you like */
+#map {
+    width: 100%;
+    height: 100%;
+    position: absolute
+}
+
+.scroll {
+    height: 100%;
+}
+
+/* Polymer */
+
+html,body {
+    font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+}
+
+html /deep/ [autofocus] {
+    color: #03a9f4;
+}
+
+paper-fab {
+    background-color: #11c1f3;
+    position: absolute;
+    right: 20px;
+    bottom: 55px;
+    z-index: 100;
+}
+
+core-image {
+    width: 60px;
+    height: 60px;
+    background-color: lightgray;
+}
+
+paper-radio-button {
+    display: block;
+}
+
+#lostForm paper-button {
+    background: #11c1f3;
+    color: #FFFFFF;
+}
+
+#lostForm paper-button > core-icon {
+    font-size: 28px;
+}

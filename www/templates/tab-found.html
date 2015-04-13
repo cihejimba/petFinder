@@ -1,0 +1,31 @@
+<ion-view name="tab-found" view-title="{{ 'TAB_FOUND_TEXT' | translate }}">
+  <ion-content>
+    <ul class="list">
+      <li class="item">
+        <div class="card">
+          <div class="item item-divider">
+            <div class="row row-center">
+              <div class="col col-33">
+                <core-image sizing="cover" preload fade src="{{image}}"></core-image>
+              </div>
+              <div class="col col-67">
+                <div>Dog lost in Prado</div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-text-wrap">
+            This is a basic Card with some text.
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <paper-fab icon="add" ui-sref="tab.found-form"></paper-fab>
+
+    <paper-dialog id="error-dialog" heading="{{error.title}}" closeSelector="[dismissive]">
+      <p>{{error.text}}</p>
+      <paper-button dismissive autofocus>Tap me to close</paper-button>
+    </paper-dialog>
+  </ion-content>
+</ion-view>
+
