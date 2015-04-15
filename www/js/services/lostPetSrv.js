@@ -5,19 +5,8 @@ services.factory('LostPetSrv', ['$q',
   function($q){
 
     var save = function (data) {
-      var pet = new Pet(data),
-          deferred = $q.defer();
-
-      pet.save(null, {
-        success: function(response) {
-          deferred.resolve(response);
-        },
-        error: function(response, error) {
-          deferred.reject(error);
-        }
-      });
-
-      return deferred.promise;
+      var pet = new Pet(data);
+      return pet.save();
     };
 
     return {
