@@ -10,5 +10,15 @@ var Pet = Parse.Object.extend("Pet", {
   }
 }, {
   // Class methods
-
+  getDefaults: function () {
+    return {
+      image: 'img/no-image.png',
+      color: '',
+      state: '',
+      zone: '',
+      gender: '',
+      date: '',
+      description: ''
+    };
+  }
 });

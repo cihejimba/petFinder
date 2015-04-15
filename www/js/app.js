@@ -2,7 +2,6 @@ angular.module('petFinder',
     [
       'ionic',
       'ngCordova',
-      'ngResource',
       'pascalprecht.translate',
       'petFinder.controllers',
       'petFinder.services'
@@ -23,8 +22,10 @@ angular.module('petFinder',
       });
     })
 
-    .config(['$stateProvider', '$urlRouterProvider', '$translateProvider',
-      function ($stateProvider, $urlRouterProvider, $translateProvider) {
+    .config(['$stateProvider', '$ionicConfigProvider', '$urlRouterProvider', '$translateProvider',
+      function ($stateProvider, $ionicConfigProvider, $urlRouterProvider, $translateProvider) {
+
+        $ionicConfigProvider.tabs.position('top');
 
         // registers translation table with language key 'en'
         $translateProvider.translations('en', translationsEN);

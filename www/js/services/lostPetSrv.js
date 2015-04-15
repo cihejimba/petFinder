@@ -1,12 +1,28 @@
 /**
  * Created by federicomaceachen on 4/13/15.
  */
-services.factory('LostPetSrv', ['$resource',
-  function($resource){
+services.factory('LostPetSrv', ['$q',
+  function($q){
 
-    return $resource('phones/:phoneId.json', {}, {
-      query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
-    });
+    var save = function (data) {
+      var pet = new Pet(data),
+          deferred = $q.defer();
+
+      pet.save(null, {
+        success: function(response) {
+          deferred.resolve(response);
+        },
+        error: function(response, error) {
+          deferred.reject(error);
+        }
+      });
+
+      return deferred.promise;
+    };
+
+    return {
+      save: save
+    }
 
   }
 ]);

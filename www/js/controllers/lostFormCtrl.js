@@ -2,28 +2,28 @@
  * Created by federicomaceachen on 3/16/15.
  */
 controllerModule.controller('LostFormCtrl',
-    ['$scope', 'CameraSrv', 'DatePickerSrv',
-      function($scope, CameraSrv, DatePickerSrv) {
+    ['$scope', 'CameraSrv', '$ionicLoading', '$cordovaToast', 'LostPetSrv',
+      function($scope, CameraSrv, $ionicLoading, $cordovaToast, LostPetSrv) {
 
-        $scope.data = {
-          image: '',
-          color: '',
-          state: '',
-          zone: '',
-          gender: '',
-          date: '',
-          description: ''
-        };
+        $scope.data = {};
+
+        angular.extend($scope.data, Pet.getDefaults());
 
         $scope.saveLostPet = function (data) {
-          alert('Saving.. ' + data);
-        };
+          $ionicLoading.show({
+            templateUrl: '../templates/loading.html'
+          });
 
-        $scope.dateSelected = false;
-
-        $scope.gender = {
-          male: 'male',
-          female: 'female'
+          LostPetSrv.save(data).then(
+            function (result) {
+              $ionicLoading.hide();
+              //$cordovaToast.showShortBottom('Pet saved.');
+              angular.extend($scope.data, Pet.getDefaults());
+            },
+            function (reason) {
+              $ionicLoading.hide();
+            }
+          );
         };
 
         $scope.getPhoto = function(type) {
@@ -40,26 +40,6 @@ controllerModule.controller('LostFormCtrl',
               }
           );
         };
-
-        $scope.showDatePicker = function () {
-          var options = {
-            date: new Date(),
-            mode: 'date', // or 'time'
-            minDate: new Date() - 10000,
-            allowOldDates: true,
-            allowFutureDates: false,
-            doneButtonLabel: 'DONE',
-            doneButtonColor: '#F2F3F4',
-            cancelButtonLabel: 'CANCEL',
-            cancelButtonColor: '#000000'
-          };
-
-          DatePickerSrv.getDatePicker(options).then(function(date){
-            $scope.data.date = date;
-          });
-          $scope.dateSelected = true;
-        };
-
       }
     ]
 );
