@@ -1,79 +1,114 @@
-<ion-view name="tab-lost" view-title="{{ 'TAB_LOST.FORM_TITLE' | translate }}">
+<ion-view name="tab-lost" view-title="{{ 'TAB_LOST.FORM.TITLE' | translate }}">
   <ion-content id="lostForm">
-    <div class="row">
-      <div class="col col-50">
-        <img style="width:150px; height:150px;"
-                    src="{{data.image}}" />
-      </div>
-      <div class="col col-25">
-        <button type="button" ng-click="getPhoto('CAMERA')" class="button button-calm icon ion-camera"></button>
-      </div>
-      <div class="col col-25">
-        <button type="button" ng-click="getPhoto('GALLERY')" class="button button-calm icon ion-image"></button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-100">
-        <label class="item item-input">
-          <input type="text" placeholder="{{ 'TAB_LOST.FORM_COLOR' | translate }}" ng-model="data.color">
-        </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-50">
-        <label class="item item-input">
-          <input type="text" placeholder="{{ 'TAB_LOST.FORM_STATE' | translate }}" ng-model="data.state">
-        </label>
-      </div>
-      <div class="col col-50">
-        <label class="item item-input">
-          <input type="text" placeholder="{{ 'TAB_LOST.FORM_ZONE' | translate }}" ng-model="data.zone">
-        </label>
-      </div>
-    </div>
-    <div class="row row-center">
-      <div class="col col-50">
-        <label translate>TAB_LOST.FORM_GENDER</label>
-      </div>
-    </div>
-    <div class="row row-center">
-      <div class="col col-50">
-        <div class="list">
-          <label class="item item-radio">
-            <input type="radio" name="group" ng-model="data.gender" value="male">
-            <div class="item-content" translate>TAB_LOST.FORM_MALE</div>
-            <i class="radio-icon ion-checkmark"></i>
-          </label>
+    <form name="lostForm">
+      <div class="row">
+        <div class="col col-50">
+          <img style="width:150px; height:150px;"
+                      src="{{data.image}}" />
+        </div>
+        <div class="col col-25">
+          <button type="button" ng-click="getPhoto('CAMERA')" class="button button-calm icon ion-camera"></button>
+        </div>
+        <div class="col col-25">
+          <button type="button" ng-click="getPhoto('GALLERY')" class="button button-calm icon ion-image"></button>
         </div>
       </div>
-      <div class="col col-50">
-        <div class="list">
-          <label class="item item-radio">
-            <input type="radio" name="group" ng-model="data.gender" value="female">
-            <div class="item-content" translate>TAB_LOST.FORM_FEMALE</div>
-            <i class="radio-icon ion-checkmark"></i>
+      <div class="row">
+        <div class="col col-100">
+          <label class="item item-input">
+            <input type="text" name="color" placeholder="{{ 'TAB_LOST.FORM.COLOR' | translate }}" ng-model="data.color" required>
           </label>
+          <div class="error-container"
+               ng-show="lostForm.color.$dirty && lostForm.color.$invalid">
+            <small class="error" ng-show="lostForm.color.$error.required">
+              Color is required.
+            </small>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row row-center">
-      <div class="col col-100">
-        <label class="item item-input">
-          <input type="date" placeholder="{{ 'TAB_LOST.FORM_DATE' | translate }}" ng-model="data.date">
-        </label>
+      <div class="row">
+        <div class="col col-50">
+          <label class="item item-input">
+            <input type="text" name="state" placeholder="{{ 'TAB_LOST.FORM.STATE' | translate }}" ng-model="data.state" required>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.state.$dirty && lostForm.state.$invalid">
+            <small class="error" ng-show="lostForm.state.$error.required">
+              State is required.
+            </small>
+          </div>
+        </div>
+        <div class="col col-50">
+          <label class="item item-input">
+            <input type="text" name="zone" placeholder="{{ 'TAB_LOST.FORM.ZONE' | translate }}" ng-model="data.zone" required>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.zone.$dirty && lostForm.zone.$invalid">
+            <small class="error" ng-show="lostForm.zone.$error.required">
+              Zone is required.
+            </small>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row row-center">
-      <div class="col col-100">
-        <label class="item item-input">
-          <textarea placeholder="{{ 'TAB_LOST.FORM_ADD_COMMENT' | translate }}" ng-model="data.description"></textarea>
-        </label>
+      <div class="row row-center">
+        <div class="col col-50">
+          <label translate>TAB_LOST.FORM.GENDER</label>
+        </div>
       </div>
-    </div>
-    <div class="row row-center">
-      <div class="col col-100">
-        <button type="button" ng-click="saveLostPet(data)" class="button button-block button-calm" translate>TAB_LOST.FORM_SUBMIT</button>
+      <div class="row row-center">
+        <div class="col col-50">
+          <div class="list">
+            <label class="item item-radio">
+              <input type="radio" name="group" ng-model="data.gender" value="male" ng-required="!data.gender">
+              <div class="item-content" translate>TAB_LOST.FORM.MALE</div>
+              <i class="radio-icon ion-checkmark"></i>
+            </label>
+          </div>
+        </div>
+        <div class="col col-50">
+          <div class="list">
+            <label class="item item-radio">
+              <input type="radio" name="group" ng-model="data.gender" value="female" ng-required="!data.gender">
+              <div class="item-content" translate>TAB_LOST.FORM.FEMALE</div>
+              <i class="radio-icon ion-checkmark"></i>
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="row row-center">
+        <div class="col col-100">
+          <label class="item item-input">
+            <input type="date" name="date" placeholder="{{ 'TAB_LOST.FORM.DATE' | translate }}" ng-model="data.date" required>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.date.$dirty && lostForm.date.$invalid">
+            <small class="error" ng-show="lostForm.date.$error.required">
+              Date is required.
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col col-100">
+          <label class="item item-input">
+            <textarea name="comment" placeholder="{{ 'TAB_LOST.FORM.COMMENT' | translate }}" ng-model="data.description" required></textarea>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.comment.$dirty && lostForm.comment.$invalid">
+            <small class="error" ng-show="lostForm.comment.$error.required">
+              {{ 'TAB_LOST.FORM.VALIDATION.COMMENT_REQUIRED' | translate }}
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col col-100">
+          <button type="button" ng-click="saveLostPet(data)"
+                  class="button button-block button-calm"
+                  ng-disabled="lostForm.$invalid"
+                  translate>TAB_LOST.FORM.SUBMIT</button>
+        </div>
+      </div>
+    </form>
   </ion-content>
 </ion-view>

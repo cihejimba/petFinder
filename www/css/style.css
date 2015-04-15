@@ -36,3 +36,13 @@ html /deep/ [autofocus] {
     width: 55.5px;
     height: 55.5px;
 }
+
+input.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid {
+    border: 1px solid #F00;
+}
+
+form .error-container {
+    color: #bb1f34;
+    font-size: 1.2em;
+    margin: 0.9em 0;
+}

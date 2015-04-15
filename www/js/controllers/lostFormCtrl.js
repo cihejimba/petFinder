@@ -2,8 +2,8 @@
  * Created by federicomaceachen on 3/16/15.
  */
 controllerModule.controller('LostFormCtrl',
-    ['$scope', 'CameraSrv', '$ionicLoading', '$cordovaToast', 'LostPetSrv',
-      function($scope, CameraSrv, $ionicLoading, $cordovaToast, LostPetSrv) {
+    ['$scope', 'CameraSrv', '$ionicLoading', '$cordovaToast', '$translate', 'LostPetSrv',
+      function($scope, CameraSrv, $ionicLoading, $cordovaToast, $translate, LostPetSrv) {
 
         $scope.data = {};
 
@@ -17,7 +17,9 @@ controllerModule.controller('LostFormCtrl',
           LostPetSrv.save(data).then(
             function (result) {
               $ionicLoading.hide();
-              //$cordovaToast.showShortBottom('Pet saved.');
+              $translate('GENERIC.SAVED').then(function (translation) {
+                $cordovaToast.showShortBottom(translation);
+              });
               angular.extend($scope.data, Pet.getDefaults());
             },
             function (reason) {

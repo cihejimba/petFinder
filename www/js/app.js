@@ -2,9 +2,11 @@ angular.module('petFinder',
     [
       'ionic',
       'ngCordova',
+      'ngCookies',
       'pascalprecht.translate',
       'petFinder.controllers',
-      'petFinder.services'
+      'petFinder.services',
+      'petFinder.directives'
     ]
 )
     .run(function ($ionicPlatform) {
@@ -32,6 +34,8 @@ angular.module('petFinder',
 
         // registers translation table with language key 'es'
         $translateProvider.translations('es', translationsES);
+
+        $translateProvider.useLocalStorage();
 
         // try to find out preferred language by yourself
         $translateProvider.determinePreferredLanguage(function () {
