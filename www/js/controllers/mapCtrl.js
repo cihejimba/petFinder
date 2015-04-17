@@ -2,8 +2,13 @@
  * Created by federicomaceachen on 3/9/15.
  */
 controllerModule.controller('MapCtrl',
-    ['$scope', '$state', '$ionicLoading',
-  function($scope, $state, $ionicLoading) {
+    ['$scope', '$state', '$ionicLoading', 'MapSrv', '$timeout',
+  function($scope, $state, $ionicLoading, MapSrv, $timeout) {
+
+    $scope.$on('$ionicView.afterEnter', function(){
+      // Hack to fix google map breaking after opening a second map in a different view.
+      if($scope.map) google.maps.event.trigger($scope.map, 'resize');
+    });
 
     function initialize() {
       var mapOptions = {
@@ -12,39 +17,41 @@ controllerModule.controller('MapCtrl',
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-      $scope.map = map;
+      $scope.map = MapSrv.initializeMap(document.getElementById('map'), mapOptions);
 
       $scope.centerOnMe();
     }
 
     $scope.centerOnMe = function() {
-      if(!$scope.map) {
-        return;
-      }
-
       $scope.loading = $ionicLoading.show({
         content: 'Getting current location...',
         showBackdrop: false
       });
 
-      navigator.geolocation.getCurrentPosition(
-          function(pos) {
-            $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            new google.maps.Marker({
-              position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-              map: $scope.map,
-              icon: 'img/me_marker.png'
-            });
-            $ionicLoading.hide();
-          },
-          function(error) {
-            alert('Unable to get location: ' + error.message);
-          }
+      MapSrv.centerOnMe($scope.map).then(
+        function success(pos) {
+          $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+          new google.maps.Marker({
+            position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+            map: $scope.map,
+            icon: 'img/me_marker.png'
+          });
+          $ionicLoading.hide();
+        },
+        function error(reason) {
+          $ionicLoading.hide();
+          console.log(reason);
+        }
       );
     };
 
-    initialize();
-
+    ionic.Platform.ready(function(){
+      $timeout(function () {
+        // in my case
+        initialize();
+        // OR this case:
+        google.maps.event.trigger($scope.map, 'resize');
+      });
+    });
 }]);

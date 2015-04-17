@@ -25,6 +25,9 @@ var translationsEN = {
         ZONE_REQUIRED: 'Zone is required.',
         DATE_REQUIRED: 'Date is required.',
         GENDER_REQUIRED: 'Gender is required.'
+      },
+      MAP_MODAL: {
+        TITLE: 'Where did you lost your pet?'
       }
     },
     TAB_LOST_DETAIL: {
@@ -63,6 +66,9 @@ var translationsES= {
         ZONE_REQUIRED: 'Barrio es requerido.',
         DATE_REQUIRED: 'Fecha es requerido.',
         GENDER_REQUIRED: 'Genero es requerido.'
+      },
+      MAP_MODAL: {
+        TITLE: 'Dónde perdió su mascota?'
       }
     },
     TAB_LOST_DETAIL: {

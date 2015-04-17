@@ -3,14 +3,25 @@
     <form name="lostForm">
       <div class="row">
         <div class="col col-50">
-          <img style="width:150px; height:150px;"
-                      src="{{data.image}}" />
+          <button type="button" ng-click="getPhoto('GALLERY')"
+                  class="button icon-left button-calm ion-image">
+            Add photo
+          </button>
         </div>
-        <div class="col col-25">
-          <button type="button" ng-click="getPhoto('CAMERA')" class="button button-calm icon ion-camera"></button>
+        <div class="col col-50">
+          <div class="col col-50">
+            <img style="width:150px; height:150px;" src="{{data.image}}" ng-show="data.image !== ''"/>
+          </div>
         </div>
-        <div class="col col-25">
-          <button type="button" ng-click="getPhoto('GALLERY')" class="button button-calm icon ion-image"></button>
+      </div>
+      <div class="row">
+        <div class="col col-50">
+          <a ng-click="openModal()" class="button icon-left button-calm ion-map">Add position</a>
+        </div>
+        <div class="col col-50">
+          <div class="col col-50">
+            <img style="width:150px; height:150px;" src="{{data.image}}" ng-show="data.image"/>
+          </div>
         </div>
       </div>
       <div class="row">
