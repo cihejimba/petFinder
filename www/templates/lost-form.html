@@ -16,7 +16,11 @@
       </div>
       <div class="row">
         <div class="col col-50">
-          <a ng-click="openModal()" class="button icon-left button-calm ion-map">Add position</a>
+          <a ng-click="openModal()" ng-hide="data.position" class="button icon-left button-calm ion-map">Add position</a>
+          <div ng-show="data.position">
+            <img class="show-top" src="{{mapUrl}}">
+            <span class="icon ion-close-circled close-size" ng-click="removePosition()"></span>
+          </div>
         </div>
         <div class="col col-50">
           <div class="col col-50">

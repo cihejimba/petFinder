@@ -4,7 +4,6 @@
 controllerModule.controller('LostFormCtrl',
     [
       '$scope',
-      '$window',
       '$timeout',
       '$ionicLoading',
       '$ionicModal',
@@ -14,7 +13,6 @@ controllerModule.controller('LostFormCtrl',
       'LostPetSrv',
       'MapSrv',
       function($scope,
-               $window,
                $timeout,
                $ionicLoading,
                $ionicModal,
@@ -24,16 +22,15 @@ controllerModule.controller('LostFormCtrl',
                LostPetSrv,
                MapSrv) {
 
+        var LOST_FORM_POSITION_KEY = 'lost-form-position',
+          STATIC_MAP_URL = 'https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=200x200&center=';
+
+
         $scope.data = {};
+        //
+        $scope.mapUrl = '';
 
         angular.extend($scope.data, Pet.getDefaults());
-
-        $scope.$on('$ionicView.enter', function () {
-          var position = $window.sessionStorage.getItem('lost-form-position');
-          if(position) {
-            $window.sessionStorage.removeItem('lost-form-position');
-          }
-        });
 
         $scope.saveLostPet = function (data) {
           $ionicLoading.show({
@@ -69,6 +66,10 @@ controllerModule.controller('LostFormCtrl',
           );
         };
 
+        $scope.removePosition = function () {
+          delete $scope.data.position;
+        };
+
         function initializeMap() {
           var mapOptions = {
             zoomControl: false,
@@ -78,6 +79,14 @@ controllerModule.controller('LostFormCtrl',
           };
 
           $scope.map = MapSrv.initializeMap(document.getElementById('mapModal'), mapOptions);
+
+          google.maps.event.addListener($scope.map, 'click', function(event) {
+            $scope.data.position = event.latLng;
+            var latLong = event.latLng.lat() + ',' + event.latLng.lng();
+            $scope.mapUrl = STATIC_MAP_URL + latLong;
+            $scope.mapUrl += '&markers=color:red|' + latLong;
+            $scope.closeModal();
+          });
 
           $scope.centerOnMe();
         }
@@ -129,16 +138,6 @@ controllerModule.controller('LostFormCtrl',
         $scope.$on('$destroy', function() {
           $scope.modal.remove();
         });
-        // Execute action on hide modal
-        $scope.$on('modal.hidden', function() {
-          // Execute action
-        });
-        // Execute action on remove modal
-        $scope.$on('modal.removed', function() {
-          // Execute action
-        });
-
-
       }
     ]
 );

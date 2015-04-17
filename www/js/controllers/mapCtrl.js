@@ -2,8 +2,15 @@
  * Created by federicomaceachen on 3/9/15.
  */
 controllerModule.controller('MapCtrl',
-    ['$scope', '$state', '$ionicLoading', 'MapSrv', '$timeout',
-  function($scope, $state, $ionicLoading, MapSrv, $timeout) {
+    [
+      '$scope',
+      '$timeout',
+      '$ionicLoading',
+      'MapSrv',
+  function($scope,
+           $timeout,
+           $ionicLoading,
+           MapSrv) {
 
     $scope.$on('$ionicView.afterEnter', function(){
       // Hack to fix google map breaking after opening a second map in a different view.
