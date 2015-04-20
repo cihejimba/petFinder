@@ -31,9 +31,9 @@ controllerModule.controller('MapCtrl',
     }
 
     $scope.centerOnMe = function() {
-      $scope.loading = $ionicLoading.show({
-        content: 'Getting current location...',
-        showBackdrop: false
+      $ionicLoading.show({
+        //templateUrl: '../templates/loading.html'
+        template: "<ion-spinner class='spinner-calm' icon='lines'></ion-spinner>"
       });
 
       MapSrv.centerOnMe($scope.map).then(

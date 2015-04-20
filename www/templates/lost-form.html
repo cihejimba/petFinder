@@ -1,31 +1,17 @@
 <ion-view name="tab-lost" view-title="{{ 'TAB_LOST.FORM.TITLE' | translate }}">
   <ion-content id="lostForm">
     <form name="lostForm">
-      <div class="row">
-        <div class="col col-50">
-          <button type="button" ng-click="getPhoto('GALLERY')"
-                  class="button icon-left button-calm ion-image">
-            Add photo
-          </button>
-        </div>
-        <div class="col col-50">
-          <div class="col col-50">
-            <img style="width:150px; height:150px;" src="{{data.image}}" ng-show="data.image !== ''"/>
-          </div>
+      <div class="row row-center">
+        <div class="col col-100">
+          <h4>How is your pet?</h4>
         </div>
       </div>
       <div class="row">
-        <div class="col col-50">
-          <a ng-click="openModal()" ng-hide="data.position" class="button icon-left button-calm ion-map">Add position</a>
-          <div ng-show="data.position">
-            <img class="show-top" src="{{mapUrl}}">
-            <span class="icon ion-close-circled close-size" ng-click="removePosition()"></span>
-          </div>
-        </div>
-        <div class="col col-50">
-          <div class="col col-50">
-            <img style="width:150px; height:150px;" src="{{data.image}}" ng-show="data.image"/>
-          </div>
+        <div class="col col-100">
+          <button type="button" ng-click="getPhoto('GALLERY')"
+                  class="button icon button-calm ion-image">
+          </button>
+          <img style="width:100%; height:250px;" src="{{'data:image/jpeg;base64,' + data.image}}" ng-show="data.image !== ''"/>
         </div>
       </div>
       <div class="row">
@@ -35,39 +21,10 @@
           </label>
           <div class="error-container"
                ng-show="lostForm.color.$dirty && lostForm.color.$invalid">
-            <small class="error" ng-show="lostForm.color.$error.required">
-              Color is required.
+            <small class="error" ng-show="lostForm.color.$error.required" translate>
+              {{ 'TAB_LOST.FORM.VALIDATIONS.COLOR_REQUIRED' | translate }}
             </small>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-50">
-          <label class="item item-input">
-            <input type="text" name="state" placeholder="{{ 'TAB_LOST.FORM.STATE' | translate }}" ng-model="data.state" required>
-          </label>
-          <div class="error-container"
-               ng-show="lostForm.state.$dirty && lostForm.state.$invalid">
-            <small class="error" ng-show="lostForm.state.$error.required">
-              State is required.
-            </small>
-          </div>
-        </div>
-        <div class="col col-50">
-          <label class="item item-input">
-            <input type="text" name="zone" placeholder="{{ 'TAB_LOST.FORM.ZONE' | translate }}" ng-model="data.zone" required>
-          </label>
-          <div class="error-container"
-               ng-show="lostForm.zone.$dirty && lostForm.zone.$invalid">
-            <small class="error" ng-show="lostForm.zone.$error.required">
-              Zone is required.
-            </small>
-          </div>
-        </div>
-      </div>
-      <div class="row row-center">
-        <div class="col col-50">
-          <label translate>TAB_LOST.FORM.GENDER</label>
         </div>
       </div>
       <div class="row row-center">
@@ -93,25 +50,97 @@
       <div class="row row-center">
         <div class="col col-100">
           <label class="item item-input">
-            <input type="date" name="date" placeholder="{{ 'TAB_LOST.FORM.DATE' | translate }}" ng-model="data.date" required>
+            <textarea name="comment" placeholder="{{ 'TAB_LOST.FORM.COMMENT' | translate }}" ng-model="data.comment" required></textarea>
           </label>
           <div class="error-container"
-               ng-show="lostForm.date.$dirty && lostForm.date.$invalid">
-            <small class="error" ng-show="lostForm.date.$error.required">
-              Date is required.
+               ng-show="lostForm.comment.$dirty && lostForm.comment.$invalid">
+            <small class="error" ng-show="lostForm.comment.$error.required">
+              {{ 'TAB_LOST.FORM.VALIDATIONS.COMMENT_REQUIRED' | translate }}
             </small>
           </div>
         </div>
       </div>
       <div class="row row-center">
         <div class="col col-100">
+          <h4>Where did you lost your pet?</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-75">
+          <button ng-click="openModal()" ng-hide="data.location" class="button icon-left button-calm ion-map"></button>
+          <div ng-show="data.location">
+            <img class="show-top" src="{{mapUrl}}">
+            <span class="icon ion-close-circled close-size" ng-click="removeLocation()"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-100">
           <label class="item item-input">
-            <textarea name="comment" placeholder="{{ 'TAB_LOST.FORM.COMMENT' | translate }}" ng-model="data.description" required></textarea>
+            <input type="text" name="neighborhood" placeholder="{{ 'TAB_LOST.FORM.NEIGHBORHOOD' | translate }}"
+                   ng-model="data.neighborhood" required>
           </label>
           <div class="error-container"
-               ng-show="lostForm.comment.$dirty && lostForm.comment.$invalid">
-            <small class="error" ng-show="lostForm.comment.$error.required">
-              {{ 'TAB_LOST.FORM.VALIDATION.COMMENT_REQUIRED' | translate }}
+               ng-show="lostForm.neighborhood.$dirty && lostForm.neighborhood.$invalid">
+            <small class="error" ng-show="lostForm.neighborhood.$error.required">
+              {{ 'TAB_LOST.FORM.VALIDATIONS.NEIGHBORHOOD_REQUIRED' | translate }}
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-100">
+          <label class="item item-input">
+            <input type="text" name="locality" placeholder="{{ 'TAB_LOST.FORM.LOCALITY' | translate }}"
+                   ng-model="data.locality" required>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.locality.$dirty && lostForm.locality.$invalid">
+            <small class="error" ng-show="lostForm.locality.$error.required">
+              {{ 'TAB_LOST.FORM.VALIDATIONS.LOCALITY_REQUIRED' | translate }}
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-100">
+          <label class="item item-input">
+            <input type="text" name="country" placeholder="{{ 'TAB_LOST.FORM.COUNTRY' | translate }}"
+                   ng-model="data.country" required>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.country.$dirty && lostForm.country.$invalid">
+            <small class="error" ng-show="lostForm.country.$error.required">
+              {{ 'TAB_LOST.FORM.VALIDATIONS.COUNTRY_REQUIRED' | translate }}
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col col-100">
+          <h4>When did you lost your pet?</h4>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col col-100">
+          <div class="item item-input-inset" ng-show="device.isAndroid || device.isIOS">
+            <label class="item-input-wrapper">
+              <input type="text" name="date" placeholder="{{ 'TAB_LOST.FORM.DATE' | translate }}"
+                     ng-model="data.date" ng-disabled="true" required>
+            </label>
+            <button ng-click="showDatePicker()"
+                    class="button button-small icon button-calm ion-calendar"></button>
+          </div>
+          <div class="item item-input-inset" ng-hide="device.isAndroid || device.isIOS">
+            <label class="item-input-wrapper">
+              <input type="date" name="date" placeholder="{{ 'TAB_LOST.FORM.DATE' | translate }}"
+                     ng-model="data.date">
+            </label>
+          </div>
+          <div class="error-container"
+               ng-show="lostForm.date.$dirty && lostForm.date.$invalid">
+            <small class="error" ng-show="lostForm.date.$error.required">
+              {{ 'TAB_LOST.FORM.VALIDATIONS.DATE_REQUIRED' | translate }}
             </small>
           </div>
         </div>

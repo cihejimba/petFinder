@@ -14,12 +14,11 @@ services.factory('CameraSrv', ['$cordovaCamera',
 
       var options = {
         quality : 100,
-        destinationType : Camera.DestinationType.FILE_URI,
+        destinationType : Camera.DestinationType.DATA_URL,
         sourceType : sourceType,
         allowEdit : false,
+        targetHeight: 250,
         encodingType: Camera.EncodingType.PNG,
-        targetWidth: 150,
-        targetHeight: 150,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: true
       };

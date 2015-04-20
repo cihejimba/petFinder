@@ -14,11 +14,14 @@ var Pet = Parse.Object.extend("Pet", {
     return {
       image: '',
       color: '',
-      state: '',
-      zone: '',
+      locality: '',
+      neighborhood: '',
+      country: '',
       gender: '',
       date: '',
-      description: ''
+      comment: '',
+      location: null,
+      image: ''
     };
   }
 });

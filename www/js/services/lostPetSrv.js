@@ -5,7 +5,11 @@ services.factory('LostPetSrv', [
   function(){
 
     var save = function (data) {
-      var pet = new Pet(data);
+      var base64 = data.image,
+        imageFile = new Parse.File('petFinderimage.png', { base64: base64 }, 'image/png'),
+        pet = new Pet(data);
+
+      pet.set('image', imageFile);
       return pet.save();
     };
 
