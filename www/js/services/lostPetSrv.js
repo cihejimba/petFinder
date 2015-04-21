@@ -18,13 +18,21 @@ services.factory('LostPetSrv', [
 
     var fetch = function (options) {
       var query = new Parse.Query(Pet);
-      query.limit(10);
+      query.limit(options.limit);
+      query.skip(options.page * options.limit);
+      query.descending("date");
       return query.find();
+    };
+
+    var count = function () {
+      var query = new Parse.Query(Pet);
+      return query.count();
     };
 
     return {
       save: save,
-      fetch: fetch
+      fetch: fetch,
+      count: count
     }
 
   }
