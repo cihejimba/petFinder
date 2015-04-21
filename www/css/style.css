@@ -41,6 +41,18 @@ html /deep/ [autofocus] {
     height: 55.5px;
 }
 
+.no-border {
+    border: none;
+}
+
+.filter-header {
+    padding: 0;
+}
+
+.filter-header a {
+    float: right;
+}
+
 input.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid {
     border: 1px solid #F00;
 }

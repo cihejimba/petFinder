@@ -1,7 +1,25 @@
 <ion-view name="tab-lost" view-title="{{ 'TAB_LOST.TITLE' | translate }}">
   <ion-content lazy-scroll>
-
     <ion-list>
+      <ion-item class="filter-header">
+        <div class="no-border">
+          <div class="row">
+            <div class="col col-50">
+              <label class="item item-input item-select">
+                <div class="input-label">Sort</div>
+                <select ng-change="sort()"
+                        ng-options="sortValue.label group by sortValue.group for sortValue in sortValues"
+                        ng-model="options.sort">
+                </select>
+              </label>
+            </div>
+            <div class="col col-50">
+              <a class="button button-icon icon ion-funnel"></a>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+
       <ion-item ng-repeat="lostPet in lostPets">
         <a class="item item-thumbnail-left item-icon-right"
            href="#/app/lost/detail/{{ lostPet.id }}">

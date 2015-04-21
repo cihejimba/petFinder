@@ -21,6 +21,9 @@ var translationsEN = {
       DATE: 'Date*',
       COMMENT: 'Comment*',
       SUBMIT: 'Submit',
+      HOW_TITLE: 'How is your pet?',
+      WHERE_TITLE: 'Where did you lost your pet?',
+      WHEN_TITLE: 'When did you lost your pet?',
       VALIDATIONS: {
         COLOR_REQUIRED: 'Color is required.',
         COMMENT_REQUIRED: 'Comment is required.',
@@ -69,6 +72,9 @@ var translationsES= {
       DATE: 'Fecha*',
       COMMENT: 'Comentario*',
       SUBMIT: 'Submit',
+      HOW_TITLE: 'Cómo es tú mascota?',
+      WHERE_TITLE: 'Dónde se perdió?',
+      WHEN_TITLE: 'Cuándo se perdió?',
       VALIDATIONS: {
         COLOR_REQUIRED: 'Color es requerido.',
         COMMENT_REQUIRED: 'Comentario es requerido.',

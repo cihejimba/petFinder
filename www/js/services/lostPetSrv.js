@@ -20,7 +20,17 @@ services.factory('LostPetSrv', [
       var query = new Parse.Query(Pet);
       query.limit(options.limit);
       query.skip(options.page * options.limit);
-      query.descending("date");
+
+      //Apply sorting
+      if(options.sort.value === 'ascending') {
+        query.ascending(options.sort.field);
+      } else if(options.sort.value === 'descending') {
+        query.descending(options.sort.field);
+      }
+
+      //Apply filtering
+
+
       return query.find();
     };
 
