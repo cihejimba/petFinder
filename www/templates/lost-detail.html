@@ -1,0 +1,38 @@
+<ion-view name="tab-lostDetail" view-title="{{ 'TAB_LOST.DETAIL.TITLE' | translate }}">
+  <ion-content>
+    <div class="card">
+
+      <div class="item">
+        <h2>{{ pet.get('name') }}</h2>
+        <p>{{ pet.get('date') }}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="{{ pet.get('image').url() }}">
+        <p>
+          {{ pet.get('comment') }}
+        </p>
+        <p>
+          <a href="#" class="subdued">1 {{ 'TAB_LOST.DETAIL.LIKE' | translate }}</a>
+          <a href="#" class="subdued">5 {{ 'TAB_LOST.DETAIL.COMMENT' | translate }}</a>
+        </p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          {{ 'TAB_LOST.DETAIL.LIKE' | translate }}
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          {{ 'TAB_LOST.DETAIL.COMMENT' | translate }}
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-share"></i>
+          {{ 'TAB_LOST.DETAIL.SHARE' | translate }}
+        </a>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

@@ -2,11 +2,13 @@
  * Created by federicomaceachen on 3/17/15.
  */
 var translationsEN = {
+  SIDE_MENU_TITLE: 'Menu',
   TAB_MAP_TEXT: 'Map',
   TAB_LOST: {
     TITLE: 'Lost',
     FORM: {
       TITLE: 'Lost form',
+      NAME: 'Name',
       ADD: 'Add',
       REQUIRED: 'Required*',
       COLOR : 'Color*',
@@ -32,8 +34,11 @@ var translationsEN = {
         TITLE: 'Where did you lost your pet?'
       }
     },
-    TAB_LOST_DETAIL: {
-      TITLE: 'Lost pet detail'
+    DETAIL: {
+      TITLE: 'Lost pet detail',
+      LIKE: 'Like',
+      COMMENT: 'Comment',
+      SHARE: 'Share'
     }
   },
   TAB_FOUND_TEXT: 'Found',
@@ -45,11 +50,13 @@ var translationsEN = {
 };
 
 var translationsES= {
+  SIDE_MENU_TITLE: 'Menú',
   TAB_MAP_TEXT: 'Mapa',
   TAB_LOST: {
     TITLE: 'Perdidos',
     FORM: {
       TITLE: 'Formulario perdidos',
+      NAME: 'Nombre',
       ADD: 'Agregar',
       REQUIRED: 'Requerido*',
       COLOR : 'Color*',
@@ -75,8 +82,11 @@ var translationsES= {
         TITLE: 'Dónde perdió su mascota?'
       }
     },
-    TAB_LOST_DETAIL: {
-      TITLE: 'Detalle de mascota'
+    DETAIL: {
+      TITLE: 'Detalle de mascota',
+      LIKE: 'Me gusta',
+      COMMENT: 'Comentar',
+      SHARE: 'Compartir'
     }
   },
   TAB_FOUND_TEXT: 'Encontrados',

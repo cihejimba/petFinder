@@ -17,6 +17,19 @@
       <div class="row">
         <div class="col col-100">
           <label class="item item-input">
+            <input type="text" name="name" placeholder="{{ 'TAB_LOST.FORM.NAME' | translate }}" ng-model="data.name" required>
+          </label>
+          <div class="error-container"
+               ng-show="lostForm.name.$dirty && lostForm.name.$invalid">
+            <small class="error" ng-show="lostForm.name.$error.required" translate>
+              {{ 'TAB_LOST.FORM.VALIDATIONS.NAME_REQUIRED' | translate }}
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-100">
+          <label class="item item-input">
             <input type="text" name="color" placeholder="{{ 'TAB_LOST.FORM.COLOR' | translate }}" ng-model="data.color" required>
           </label>
           <div class="error-container"

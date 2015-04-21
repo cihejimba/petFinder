@@ -12,6 +12,7 @@ var Pet = Parse.Object.extend("Pet", {
   // Class methods
   getDefaults: function () {
     return {
+      name: '',
       image: '',
       color: '',
       locality: '',
@@ -20,8 +21,7 @@ var Pet = Parse.Object.extend("Pet", {
       gender: '',
       date: '',
       comment: '',
-      location: null,
-      image: ''
+      location: null
     };
   }
 });

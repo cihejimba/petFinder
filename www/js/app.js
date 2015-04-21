@@ -58,83 +58,83 @@ angular.module('petFinder',
         $stateProvider
 
           // setup an abstract state for the tabs directive
-            .state('tab', {
-              url: "/tab",
+            .state('app', {
+              url: "/app",
               abstract: true,
-              templateUrl: "templates/tabs.html"
+              templateUrl: "templates/side-menu.html"
             })
 
-            .state('tab.map', {
+            .state('app.map', {
               url: '/map',
               views: {
-                'tab-map': {
-                  templateUrl: 'templates/tab-map.html',
+                'menuContent': {
+                  templateUrl: 'templates/map.html',
                   controller: 'MapCtrl'
                 }
               }
             })
 
-            .state('tab.lost', {
+            .state('app.lost', {
               url: '/lost',
               views: {
-                'tab-lost': {
-                  templateUrl: 'templates/tab-lost.html',
+                'menuContent': {
+                  templateUrl: 'templates/lost.html',
                   controller: 'LostCtrl'
                 }
               }
             })
 
-            .state('tab.lostDetail', {
+            .state('app.lostDetail', {
               url: '/lost/detail/{lostPetId}',
               views: {
-                'tab-lost': {
-                  templateUrl: 'templates/tab-lost-detail.html',
+                'menuContent': {
+                  templateUrl: 'templates/lost-detail.html',
                   controller: 'LostDetailCtrl'
                 }
               }
             })
 
-            .state('tab.lost-form', {
+            .state('app.lost-form', {
               url: '/lost/lost-form',
               views: {
-                'tab-lost': {
+                'menuContent': {
                   templateUrl: 'templates/lost-form.html',
                   controller: 'LostFormCtrl'
                 }
               }
             })
 
-            .state('tab.found', {
+            .state('app.found', {
               url: '/found',
               views: {
-                'tab-found': {
-                  templateUrl: 'templates/tab-found.html',
+                'menuContent': {
+                  templateUrl: 'templates/found.html',
                   controller: 'FoundCtrl'
                 }
               }
             })
 
-            .state('tab.found-form', {
+            .state('app.found-form', {
               url: '/found/found-form/',
               views: {
-                'tab-found': {
+                'menuContent': {
                   templateUrl: 'templates/found-form.html',
                   controller: 'FoundFormCtrl'
                 }
               }
             })
 
-            .state('tab.adoption', {
+            .state('app.adoption', {
               url: '/adoption',
               views: {
-                'tab-adoption': {
-                  templateUrl: 'templates/tab-adoption.html',
+                'menuContent': {
+                  templateUrl: 'templates/adoption.html',
                   controller: 'AdoptionCtrl'
                 }
               }
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/map');
+        $urlRouterProvider.otherwise('/app/map');
 
     }]);

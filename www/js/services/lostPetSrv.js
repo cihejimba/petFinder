@@ -5,16 +5,26 @@ services.factory('LostPetSrv', [
   function(){
 
     var save = function (data) {
-      var base64 = data.image,
-        imageFile = new Parse.File('petFinderimage.png', { base64: base64 }, 'image/png'),
-        pet = new Pet(data);
+      var pet = new Pet(data);
 
-      pet.set('image', imageFile);
+      if(data.image) {
+        var base64 = data.image,
+          imageFile = new Parse.File('petFinderImage.png', { base64: base64 }, 'image/png');
+        pet.set('image', imageFile);
+      }
+
       return pet.save();
     };
 
+    var fetch = function (options) {
+      var query = new Parse.Query(Pet);
+      query.limit(10);
+      return query.find();
+    };
+
     return {
-      save: save
+      save: save,
+      fetch: fetch
     }
 
   }
